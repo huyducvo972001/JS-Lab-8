@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1 - Lab 8</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"> </script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body{
+            background-color: rgb(230, 232, 235);
+        }
+        form{
+            background-color: white;
+            border-radius: 10px;
+        }
+        #chucmung{
+            text-align: center;
+            margin: 10px 0;
+            color: red;
+        }
+        label{
+            color: rgb(170, 18, 18);
+            font-weight: bold;
+        }
+       .form-group span {
+           color: rgb(41, 39, 151);
+           margin-left: 5px;
+           font-weight: bold;
+          
+       }
+    </style>
+</head>
+<body  ng-app="b3"  ng-controller="ctr1">
+    <form name="frm" class="col-5 mx-auto border border-primary" style="margin-top: 10px; border-color: white !important; box-shadow: 5px 5px 5px gray;">
+        <h3 style="margin-top: 20px; margin-bottom: 20px; text-align: center; color: red;">NHẬP SẢN PHẨM MỚI</h3>
+        <div class="form-group">
+            <label>Tên SP</label>
+            <input style="background-color: rgb(199, 106, 106) !important; " name="tensp" class="form-control bg-primary" ng-model="tensp" required minlength="2" maxlength="30"><em ng-if="frm.tensp.$invalid" class="text-danger h6"><center style="margin-top: 10px;">Nhập tên sản phẩm từ 2 đến 30 ký tự</center></em>
+        </div>
+        <div class="form-group">
+            <label>Số lượng</label>
+            <input style="background-color: rgb(233, 238, 137) !important; " name="soluong" class="form-control bg-warning" ng-model="soluong" required minlength="" type="number" min="1" ><em ng-if="frm.soluong.$invalid || soluong>100" class="text-danger h6"><center style="margin-top: 10px;">Nhập số lượng từ 1 đến 100</center></em>      
+        </div>
+        <div class="form-group">
+            <label>Nhà sản xuất</label>
+            <select style="background-color: rgb(247, 123, 123) !important; " name="nsx" class="form-control bg-secondary text-white" ng-model="nsx">
+                <option value="0">Chọn NSX</option>
+                <option value="1">Samsung</option>
+                <option value="2">Toshiba</option>
+                <option value="3">HTC</option>
+            </select><em ng-if="!nsx || nsx==0" class="text-danger h6"><center style="margin-top: 10px;">Hãy chọn 1 nhà sản xuất</center></em>
+        </div>
+        <div class="form-group">
+            <label>Tình trạng</label>
+            <fieldset class="border border-secondary p-3" style="border: 1px solid red !important; border-radius: 5px ;">
+                <input name="tinhtrang" type="radio"  value="1" ng-model="tinhtrang" style="margin-left: 130px;"> <span>Hàng cũ</span> &nbsp; 
+
+                <input name="tinhtrang" type="radio"  value="2" ng-model="tinhtrang" style="margin-left: 120px;"> <span>Hàng mới</span> <em ng-if="!tinhtrang" class="text-danger h6"><br><center style="margin-top: 10px;">Hàng cũ hay mới?</center></em>
+
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <label>Màu sắc</label>
+            <fieldset class="border border-secondary p-3">
+                <input name="mausac" value="do" type="checkbox" ng-model="maudo" style="margin-left: 100px;"> <span>Đỏ</span> &nbsp;   
+                <input name="mausac" value="den" type="checkbox" ng-model="mauden" style="margin-left: 100px;"> <span>Đen</span>  &nbsp; 
+                <input name="mausac" value="trang" type="checkbox" ng-model="mautrang" style="margin-left: 100px;"> <span>Trắng</span> <em ng-if="!maudo && !mauden && !mautrang " class="text-danger h6"><br><center style="margin-top: 10px;">Màu gì vậy?</center></em>
+            </fieldset>
+        </div>
+        <div class="form-group" style="text-align: center;">
+            <button  class="btn btn-info">Nhập sản phẩm</button>    
+        </div>
+        <div id="chucmung">
+            <span id="kt" ng-if="frm.$valid && tinhtrang>0 && nsx>0 && maudo || mauden || mautrang && soluong <=100">
+                Bạn nhập dữ liệu đã chính xác. Cảm ơn nhé
+                <script>
+                    setInterval(function(){
+                        if(document.getElementById("kt").innerText){
+                           setTimeout(function(){
+                            window.location = "https://longnv.name.vn";
+                           },5000);    
+                        }
+                    }, 1000);
+              
+                </script>
+            </span>  
+        </div>
+    </form>
+</body>
+<script>
+    app= angular.module("b3",[]);
+    app.controller("ctr1",xuly);
+    function xuly($scope){
+
+    }
+</script>
+</html>

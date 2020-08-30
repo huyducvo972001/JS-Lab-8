@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2 - Lab 8</title>
+    <style>
+        body{
+            background-image: url('images/a1.jpg');
+        }
+        .container{
+            width: 600px;
+            margin: auto;
+            margin-top: 70px;
+       
+        }
+        .dongho{
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-image: url('images/a2.jpg');
+            background-repeat: no-repeat;
+            background-size: 100%;
+            padding: 20px 0;
+            width: 200px;
+            color: white;
+            text-align: center;
+            font-size: 50px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 15px;
+        }
+        .yc1 button{
+            margin-left: 30px;
+            width: 150px;
+            height: 50px;
+            font-size: 20px;
+            margin-top: 20px;
+            color: white;
+            background-color: brown;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h1{
+            text-align: center;
+            font-size: 50px;
+            color: rgb(122, 23, 23);
+
+        }
+        .yc1{
+            border: 1px solid white;
+            margin-bottom: 50px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        .yc2{
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid white;
+            background-color: white;
+            border-radius: 10px;
+        }
+        .yc2 button{
+            height: 31px;
+            display: block;
+            margin-left: 492px;
+            margin-top: -31px;
+            border: none;
+            background-color: rgb(116, 59, 59);
+            border-radius: 5px;
+            color: white;
+        }
+        #cbh{
+            height: 30px;
+            font-size: 16px;
+            padding-left: 8px;
+            color: rgb(34, 26, 105);
+            border-radius: 5px;
+            display: block;
+            margin-left: 18px;
+            border: 1.5px solid red;
+           
+        }
+        .btn{
+            margin-left: 10px;
+        }
+        .tk{
+            margin-bottom: 30px;
+        }
+    </style>
+        <script>
+            var dh=null;
+            function tg(){
+                var now = new Date();
+                var h = now.getHours();
+                var m = now.getMinutes();
+                var s = now.getSeconds();
+                document.getElementById("dongho").innerHTML = h + ":" + m + ":" + s ; 
+            }
+            function startDH(){
+                if(dh==null) dh = setInterval("tg()",1000);
+                
+            } 
+            function stopDH(){
+                if(dh!=null){
+                    clearInterval(dh);
+                    dh=null;
+                }
+            }
+            function xembaihoc(){
+                
+               if( document.getElementById("cbh").value == 'rong')  alert("Bạn chưa chọn bài học mà");
+               else{
+                var v = document.getElementById("cbh").value;
+                window.location= v;
+               }
+                
+                
+            }
+        </script>
+</head>
+<body>
+    <div class="container">
+        <div class="yc1">
+            <h1>ĐỒNG HỒ</h1>
+            <div class="dongho">
+            <span id="dongho">
+                <script>
+                    dh = setInterval("tg()",1000);
+                </script>
+            </span><br>
+            </div>
+            <div class="btn">
+                <button onclick="startDH()">Start</button>
+                <button onclick="stopDH()">Stop</button>
+                <button><a style="text-decoration: none; color: white;" href="https://longnv.name.vn/lap-trinh-javascript">Xem bài học</a></button>
+            </div>
+        </div>
+      
+        <div class="yc2">
+            <h1>BÀI HỌC</h1>
+            <select name="" id="cbh">
+                <option  value="rong">Chọn bài học</option>
+                <option value="https://longnv.name.vn/lap-trinh-javascript/javascript-la-gi">Bài 1: Javascript là gì</option>
+                <option value="https://longnv.name.vn/lap-trinh-javascript/bien-kieu-toan-tu-va-bieu-thuc-trong-javascript">Bài 2: Biến, Kiểu, Toán Tử và Biểu Thức trong Javascript</option>
+                <option value="https://longnv.name.vn/lap-trinh-javascript/cau-truc-dieu-khien-ham-va-su-kien-trong-javacript">Bài 3: Cấu Trúc Điều Khiển, Hàm Và Sự Kiện trong Javacript</option>
+                <option value="https://longnv.name.vn/lap-trinh-javascript/lap-trinh-doi-tuong-trong-javascript-va-mo-hinh-bom">Bài 4: Lập trình đối tượng trong Javascript và mô hình BOM</option>
+                <option value="https://longnv.name.vn/lap-trinh-javascript/mo-hinh-dom-trong-javascript">Bài 5: Mô hình DOM trong javascript</option>
+                <option value="https://longnv.name.vn/lap-trinh-javascript/validate-form">Bài 6: VALIDATE FORM</option>
+                <option value="https://longnv.name.vn/lap-trinh-javascript/gioi-thieu-ve-javascript-framework">Bài 7: Giới Thiệu về Javascript Framework</option>
+                <option value="https://longnv.name.vn/lap-trinh-javascript/su-dung-angularjs">Bài 8: Tập tành sử dụng angularJS</option>
+            </select>
+            <button class="tk" onclick="xembaihoc()">Xem bài học</button>    
+        </div>
+    </div>
+</body>
+</html>
